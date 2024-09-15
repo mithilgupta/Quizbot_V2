@@ -6,7 +6,8 @@ def lambda_handler(event, context):
     # TODO implement
 
 	input_prompt=event['prompt']
-    print(input_prompt)
+    # print(input_prompt)
+
     return {
         'statusCode': 200,
         'body': json.dumps(input_prompt)
