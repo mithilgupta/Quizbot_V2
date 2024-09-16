@@ -1,6 +1,18 @@
 # GitHub Actions taken from : https://www.youtube.com/watch?v=xs9oJaaU8I8&t=265s
 
 import json
+import os
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import CharacterTextSplitter
+# from langchain.embeddings import OpenAIEmbeddings
+# from langchain.vectorstores import FAISS
+# from langchain.chains import RetrievalQA
+# from langchain.llms import OpenAI
+
+# Load and process the PDF
+loader = PyPDFLoader("data/Lesson 2 _ Project Management 101 -uCertify.pdf")
+documents = loader.load()
+
 #1 Import boto3 and create client connection with bedrock
 import boto3
 client_bedrock=boto3.client('bedrock-runtime')
@@ -10,7 +22,12 @@ def lambda_handler(event, context):
 #2 a. Store the input in a variable, b. print the event
     input_prompt=event['prompt']
     print(input_prompt)
-	print("V3")
+	print("V4")
+	# Split the documents into chunks
+	text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+	texts = text_splitter.split_documents(documents)
+	
+	print(len(texts))
    
 #3. Create  Request Syntax - Get details from console & body should be json object - use   json.dumps for body
 
