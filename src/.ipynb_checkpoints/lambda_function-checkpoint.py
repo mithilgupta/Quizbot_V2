@@ -10,7 +10,7 @@ def lambda_handler(event, context):
 #2 a. Store the input in a variable, b. print the event
     input_prompt=event['prompt']
     print(input_prompt)
-	print("V2")
+	print("V3")
    
 #3. Create  Request Syntax - Get details from console & body should be json object - use   json.dumps for body
 
