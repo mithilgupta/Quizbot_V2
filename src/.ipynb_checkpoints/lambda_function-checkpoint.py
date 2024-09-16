@@ -17,15 +17,14 @@ documents = loader.load()
 import boto3
 client_bedrock=boto3.client('bedrock-runtime')
 #print(boto3.__version__)
-
 def lambda_handler(event, context):
-#2 a. Store the input in a variable, b. print the event
-    input_prompt=event['prompt']
+    # 2 a. Store the input in a variable, b. print the event
+    input_prompt = event['prompt']
     print(input_prompt)
-	print("V4")
-	# Split the documents into chunks
-	text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
-	texts = text_splitter.split_documents(documents)
+    print("V4")
+    # Split the documents into chunks
+    text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+    texts = text_splitter.split_documents(documents)
 	
 	# print(len(texts))
    
